@@ -1,3 +1,6 @@
+###Getting and cleaning data codebook
+
+# load plyr package
 library(plyr)
 
 # Download dataset and unzip data
@@ -35,7 +38,7 @@ colnames(subjectTest) <- "subjectId"
 
 colnames(activityLabels) <- c('activityId','activityType')
 
-# Merging all data in one set
+# Merge all data in one set
 mergedTrain <- cbind(yTrain, subjectTrain, xTrain)
 mergedTest <- cbind(yTest, subjectTest, xTest)
 mergedTrainAndTest <- rbind(mergedTrain, mergedTest)
