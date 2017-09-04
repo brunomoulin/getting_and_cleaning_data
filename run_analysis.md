@@ -45,18 +45,18 @@ mergedTrainAndTest <- rbind(mergedTrain, mergedTest)
 
 ## 2. Extracts only the measurements on the mean and standard deviation for each measurement
 
-# Reading column names
+### Reading column names
 colNames <- colnames(mergedTrainAndTest)
 
-# Create vector for defining ID, mean and standard deviation
-# Also part of "4"
+### Create vector for defining ID, mean and standard deviation
+### Also part of "4"
 meanAndStandard <- (grepl("activityId" , colNames) | 
                       grepl("subjectId" , colNames) | 
                       grepl("mean.." , colNames) | 
                       grepl("std.." , colNames) 
 )
 
-# Subset from mergedTrainAndTest
+### Subset from mergedTrainAndTest
 meanAndStandardSubset <- mergedTrainAndTest[ , meanAndStandard == TRUE]
 
 ## 3. Uses descriptive activity names to name the activities in the data set
@@ -75,5 +75,6 @@ tidy <- tidy[order(tidy$subjectId, tidy$activityId),]
 ### Write tidy data set in txt file
 write.table(tidy, "tidy.txt", row.name=FALSE)
 
+### Attempt to automatically create a codebook
 library(knitr)
 knit2html("run_analysis.md","codebook.Rmd")
